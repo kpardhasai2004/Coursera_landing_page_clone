@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Coursera | Degrees, Certificates, & Free Online Courses</title>
+  <link rel="icon" href="https://www.coursera.org/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,900italic,900,700italic,700,600italic,600,400italic,300italic,300,200italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <button id="openMockCourse">🎓 Try a Mock Course</button>
+
+    <div id="mockCourseModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+    
+        <h2 class="course-title">🌟 Introduction to AI in Daily Life</h2>
+    
+        <div class="tabs">
+          <button class="tab active" onclick="showTab('theory')">📘 Theory</button>
+          <button class="tab" onclick="showTab('quiz')">📝 MCQ Test</button>
+        </div>
+    
+        <div id="theory" class="tab-content active">
+          <h3>What is Artificial Intelligence?</h3>
+          <p>
+            Artificial Intelligence (AI) is the simulation of human intelligence in machines that are programmed to think, learn, and make decisions. These systems can perform tasks that normally require human intelligence, such as recognizing speech, understanding language, making decisions, or identifying objects in images. AI is not just about robots or futuristic machines—it’s already embedded in your daily life. Virtual assistants like Siri or Alexa, personalized recommendations on YouTube or Netflix, and even spam filters in your email—all use AI.
+          </p>
+          <p>
+            AI can be categorized into two main types: Narrow AI, which is designed for a specific task (like a chatbot), and General AI, which would perform any intellectual task a human can do (this is still a theoretical concept). Real-world applications of AI include healthcare diagnosis systems, financial fraud detection, autonomous vehicles, and even agriculture for predicting crop yields.
+          </p>
+          <p>
+            In this mock course, you will explore how AI is applied practically and test your understanding through a brief MCQ assessment. Whether you're a beginner or someone curious about how AI shapes modern life, this is a great way to get started. Let’s dive in!
+          </p>
+        </div>
+    
+        <div id="quiz" class="tab-content">
+          <h3>Quick MCQ Test (10 Questions)</h3>
+          <form id="quizForm">
+            <p><strong>1. What does AI stand for?</strong></p>
+            <label><input type="radio" name="q1" value="a"> Automatic Interface</label>
+            <label><input type="radio" name="q1" value="b"> Artificial Intelligence</label>
+            <label><input type="radio" name="q1" value="c"> Applied Internet</label>
+    
+            <p><strong>2. Which of these is an AI application?</strong></p>
+            <label><input type="radio" name="q2" value="a"> Washing Machine</label>
+            <label><input type="radio" name="q2" value="b"> Self-driving Car</label>
+            <label><input type="radio" name="q2" value="c"> Light Bulb</label>
+    
+            <p><strong>3. Which assistant uses AI?</strong></p>
+            <label><input type="radio" name="q3" value="a"> Google Assistant</label>
+            <label><input type="radio" name="q3" value="b"> Stopwatch</label>
+            <label><input type="radio" name="q3" value="c"> Flashlight</label>
+    
+            <p><strong>4. What is Narrow AI?</strong></p>
+            <label><input type="radio" name="q4" value="a"> AI that can do all human tasks</label>
+            <label><input type="radio" name="q4" value="b"> AI that is task-specific</label>
+            <label><input type="radio" name="q4" value="c"> AI used in farming</label>
+    
+            <p><strong>5. Which is NOT an AI feature?</strong></p>
+            <label><input type="radio" name="q5" value="a"> Pattern Recognition</label>
+            <label><input type="radio" name="q5" value="b"> Decision Making</label>
+            <label><input type="radio" name="q5" value="c"> Manual Typing</label>
+    
+            <p><strong>6. AI is mostly used in?</strong></p>
+            <label><input type="radio" name="q6" value="a"> Agriculture only</label>
+            <label><input type="radio" name="q6" value="b"> Multiple sectors</label>
+            <label><input type="radio" name="q6" value="c"> Food processing only</label>
+    
+            <p><strong>7. AI in healthcare helps with?</strong></p>
+            <label><input type="radio" name="q7" value="a"> Building hospitals</label>
+            <label><input type="radio" name="q7" value="b"> Disease detection</label>
+            <label><input type="radio" name="q7" value="c"> Cleaning equipment</label>
+    
+            <p><strong>8. AI-based emails filters detect?</strong></p>
+            <label><input type="radio" name="q8" value="a"> Handwriting</label>
+            <label><input type="radio" name="q8" value="b"> Spam</label>
+            <label><input type="radio" name="q8" value="c"> Smell</label>
+    
+            <p><strong>9. AI can improve over time using?</strong></p>
+            <label><input type="radio" name="q9" value="a"> Data & Feedback</label>
+            <label><input type="radio" name="q9" value="b"> Paint</label>
+            <label><input type="radio" name="q9" value="c"> Touchscreens</label>
+    
+            <p><strong>10. What is the goal of General AI?</strong></p>
+            <label><input type="radio" name="q10" value="a"> Specific task solving</label>
+            <label><input type="radio" name="q10" value="b"> Replacing machines</label>
+            <label><input type="radio" name="q10" value="c"> Mimic full human intelligence</label>
+    
+            <button type="submit">Submit Answers</button>
+          </form>
+          <div id="quizResult"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal hidden" id="courseRecommender">
+        <div class="modal-content">
+            <span class="close-button" id="closeCourseRecommender">&times;</span>
+            <h2 class="course-title">Find Your Perfect Course</h2>
+            
+            <div id="topicContainer">
+            <form id="topicForm">
+                <label for="userTopic"><strong>Enter a topic you're interested in:</strong></label>
+                <input type="text" id="userTopic" name="userTopic" required placeholder="e.g. Python, Data Science, Marketing">
+            </form>
+            </div>
+
+            <div id="quizContainer" class="hidden">
+            <form id="courseQuiz">
+                
+                <p>1. How familiar are you with <span class="topic-label"></span>?</p>
+                <label><input type="radio" name="q1" value="1" required> Never heard of it</label>
+                <label><input type="radio" name="q1" value="2"> Basic understanding</label>
+                <label><input type="radio" name="q1" value="3"> Comfortable with basics</label>
+                
+                
+                <p>2. How often do you use <span class="topic-label"></span> in your daily life or work?</p>
+                <label><input type="radio" name="q2" value="1" required> Never</label>
+                <label><input type="radio" name="q2" value="2"> Occasionally</label>
+                <label><input type="radio" name="q2" value="3"> Regularly</label>
+                
+                
+                <p>3. Can you solve basic problems using <span class="topic-label"></span>?</p>
+                <label><input type="radio" name="q3" value="1" required> Not at all</label>
+                <label><input type="radio" name="q3" value="2"> With help</label>
+                <label><input type="radio" name="q3" value="3"> Confidently</label>
+                
+                
+                <p>4. Have you ever completed a project or task involving <span class="topic-label"></span>?</p>
+                <label><input type="radio" name="q4" value="1" required> No</label>
+                <label><input type="radio" name="q4" value="2"> Small project</label>
+                <label><input type="radio" name="q4" value="3"> Multiple or large projects</label>
+                
+                
+                <p>5. How comfortable are you with advanced concepts in <span class="topic-label"></span>?</p>
+                <label><input type="radio" name="q5" value="1" required> Not at all</label>
+                <label><input type="radio" name="q5" value="2"> Somewhat</label>
+                <label><input type="radio" name="q5" value="3"> Very comfortable</label>
+                
+                <button  class="btn">Get Recommendations</button>
+            </form>
+            </div>
+
+            <div id="recommendationResult" class="hidden">
+            <div class="difficulty-tag">
+                <span id="levelBadge" class="beginner">Beginner</span>
+            </div>
+            <div class="course-grid" id="courseSuggestions"></div>
+            <button onclick="resetQuiz()" class="btn">Take Quiz Again</button>
+            </div>
+        </div>
+    </div>
+      
+    <div class="site-switcher">
+        <div class="site-switcher-container">
+            <a href="#individuals" class="site-switcher-item active">For Individuals</a>
+            <a href="#businesses" class="site-switcher-item">For Businesses</a>
+            <a href="#universities" class="site-switcher-item">For Universities</a>
+            <a href="#governments" class="site-switcher-item">For Governments</a>
+        </div>
+    </div>
+    
+    <nav class="main-navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <a href="/" class="logo">
+                    <img width="127" height="32" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjIuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZpZXdCb3g9IjAgMCAxMTU1IDE2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjIiPjxwYXRoIGQ9Ik0xNTkuNzUgODEuNTRjMC00NC40OSAzNi42My04MC40NyA4Mi40My04MC40NyA0Ni4xMiAwIDgyLjc2IDM2IDgyLjc2IDgwLjQ3IDAgNDQuMTYtMzYuNjQgODAuOC04Mi43NiA4MC44LTQ1LjggMC04Mi40My0zNi42OC04Mi40My04MC44em0xMjUuNjEgMGMwLTIyLjI0LTE5LjMtNDEuODctNDMuMTgtNDEuODctMjMuNTUgMC00Mi44NSAxOS42My00Mi44NSA0MS44NyAwIDIyLjU3IDE5LjMgNDIuMiA0Mi44NSA0Mi4yIDIzLjkyIDAgNDMuMTgtMTkuNjMgNDMuMTgtNDIuMnptNzA1LjYzIDEuMzFjMC00OC43NCAzOS41OC04MS43OCA3NS41Ny04MS43OCAyNC41MyAwIDM4LjYgNy41MiA0OC4wOCAyMS45MmwzLjc3LTE5aDM2Ljc5djE1NS40aC0zNi43OWwtNC43NS0xNmMtMTAuNzkgMTEuNzgtMjQuMjEgMTktNDcuMSAxOS0zNS4zMy0uMDUtNzUuNTctMzEuMTMtNzUuNTctNzkuNTR6bTEyNS42MS0uMzNjLS4wOS0yMy41MjctMTkuNDctNDIuODM1LTQzLTQyLjgzNS0yMy41OSAwLTQzIDE5LjQxMS00MyA0M3YuMTY1YzAgMjEuNTkgMTkuMyA0MC44OSA0Mi44NiA0MC44OSAyMy44NSAwIDQzLjE0LTE5LjMgNDMuMTQtNDEuMjJ6TTk0NS43OCAyMlY0aC00MC4yM3YxNTUuMzloNDAuMjNWNzUuNjZjMC0yNS4xOSAxMi40NC0zOC4yNyAzNC0zOC4yNyAxLjQzIDAgMi43OS4xIDQuMTIuMjNMOTkxLjM2LjExYy0yMC45Ny4xMS0zNi4xNyA3LjMtNDUuNTggMjEuODl6bS00MDQuMjcuMDF2LTE4bC00MC4yMy4wOS4zNCAxNTUuMzcgNDAuMjMtLjA5LS4yMi04My43MmMtLjA2LTI1LjE4IDEyLjM1LTM4LjI5IDMzLjkzLTM4LjM0IDEuMzc2LjAwNCAyLjc1Mi4wODEgNC4xMi4yM0w1ODcuMSAwYy0yMSAuMTctMzYuMjIgNy4zOS00NS41OSAyMi4wMXpNMzM4Ljg4IDk5LjJWNC4wMWg0MC4yMlY5NC4zYzAgMTkuOTUgMTEuMTIgMzEuNzMgMzAuNDIgMzEuNzMgMjEuNTkgMCAzNC0xMy4wOSAzNC0zOC4yOFY0LjAxaDQwLjI0djE1NS4zOGgtNDAuMjF2LTE4Yy05LjQ4IDE0LjcyLTI0Ljg2IDIxLjkyLTQ2LjEyIDIxLjkyLTM1Ljk4LjAxLTU4LjU1LTI2LjE2LTU4LjU1LTY0LjExem0zOTEuNzQtMTcuNDhjLjA5LTQzLjUxIDMxLjIzLTgwLjc0IDgwLjYyLTgwLjY1IDQ1LjguMDkgNzguMTEgMzYuNzggNzggODAgLjAxIDQuMjczLS4zMyA4LjU0LTEgMTIuNzZsLTExOC40MS0uMjJjNC41NCAxOC42NSAxOS44OSAzMi4wOSA0My4xMiAzMi4xNCAxNC4wNiAwIDI5LjEyLTUuMTggMzguMy0xNi45NGwyNy40NCAyMmMtMTQuMTEgMTkuOTMtMzkgMzEuNjYtNjUuNDggMzEuNjEtNDYuNzUtLjE2LTgyLjY3LTM1LjIzLTgyLjU5LTgwLjd6bTExOC4xMi0xNi4xNGMtMi4yNi0xNS43LTE4LjU5LTI3Ljg0LTM3Ljg5LTI3Ljg3LTE4LjY1IDAtMzMuNzEgMTEuMDYtMzkuNjMgMjcuNzNsNzcuNTIuMTR6bS0yNjEuNCA1OS45NGwzNS43Ni0xOC43MmM1LjkxIDEyLjgxIDE3LjczIDIwLjM2IDM0LjQ4IDIwLjM2IDE1LjQzIDAgMjEuMzQtNC45MiAyMS4zNC0xMS44MiAwLTI1LTg0LjcxLTkuODUtODQuNzEtNjcgMC0zMS41MiAyNy41OC00OC4yNiA2MS43Mi00OC4yNiAyNS45NCAwIDQ4LjkyIDExLjQ5IDYxLjQgMzIuODNsLTM1LjQ0IDE4Ljc1Yy01LjI1LTEwLjUxLTE1LjEtMTYuNDItMjcuNTgtMTYuNDItMTIuMTQgMC0xOC4wNiA0LjI3LTE4LjA2IDExLjQ5IDAgMjQuMyA4NC43MSA4Ljg3IDg0LjcxIDY3IDAgMzAuMjEtMjQuNjIgNDguNTktNjQuMzUgNDguNTktMzMuODItLjAzLTU3LjQ2LTExLjE5LTY5LjI3LTM2Ljh6TTAgODEuNTRDMCAzNi43MyAzNi42My43NCA4Mi40My43NGMyNy45NDctLjE5NiA1NC4xODIgMTMuNzM3IDY5LjY3IDM3bC0zNC4zNCAxOS45MmE0Mi45NzIgNDIuOTcyIDAgMDAtMzUuMzMtMTguMzJjLTIzLjU1IDAtNDIuODUgMTkuNjMtNDIuODUgNDIuMiAwIDIyLjU3IDE5LjMgNDIuMiA0Mi44NSA0Mi4yYTQyLjUwMiA0Mi41MDIgMCAwMDM2LjMxLTIwbDM0IDIwLjI4Yy0xNS4zMDcgMjMuOTU1LTQxLjkwMiAzOC40MzEtNzAuMzMgMzguMjhDMzYuNjMgMTYyLjM0IDAgMTI1LjY2IDAgODEuNTR6IiBmaWxsPSIjMDA1NkQyIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48L3N2Zz4=" alt="Coursera" class="">
+                </a>
+                <div class="dropdown">
+                    <button class="explore-button">Explore <span class="dropdown-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#0056D2"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span></button>
+                </div>
+                <div class="search-container">
+                    <input type="text" placeholder="What do you want to learn?" class="search-input">
+                    <button class="search-button" aria-label="Search">
+                        <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-293.000000, -23.000000)">
+                                <g fill="#E1E1E1">
+                                    <g transform="translate(293.000000, 22.000000)">
+                                        <path d="M11.355485,11.4503883 L16.0066609,16.1015642 L15.1015642,17.0066609 L10.4503883,12.355485 C9.34711116,13.2583262 7.93681293,13.8 6.4,13.8 C2.8653776,13.8 0,10.9346224 0,7.4 C0,3.8653776 2.8653776,1 6.4,1 C9.9346224,1 12.8,3.8653776 12.8,7.4 C12.8,8.93681293 12.2583262,10.3471112 11.355485,11.4503883 Z M6.4,12.52 C9.22769792,12.52 11.52,10.2276979 11.52,7.4 C11.52,4.57230208 9.22769792,2.28 6.4,2.28 C3.57230208,2.28 1.28,4.57230208 1.28,7.4 C1.28,10.2276979 3.57230208,12.52 6.4,12.52 Z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="navbar-right">
+                <a href="/degrees" class="nav-link">Online Degrees</a>
+                <a href="/careers" class="nav-link">Careers</a>
+                <a href="/login" class="nav-link login">Log In</a>
+                <button id="openCourseRecommender" class="join-button-nav">Find a Course</button>
+                <a href="/join" class="join-button-nav">Join for Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+          <div class="hero-info">
+            <h1>Learn without<br>limits</h1>
+            <p>
+              Start, switch, or advance your career with more than 10,000 courses, Professional Certificates, and degrees from world-class universities and companies.
+            </p>
+            <div class="hero-actions">
+              <a href="#" class="hero-btn primary">Join For Free</a>
+              <a href="#" class="hero-btn secondary">Try Coursera for Business</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="hero-c">
+              <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&w=200&h=200&fit=crop" alt="Person" />
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="collaborate-section">
+        <div class="collaborate-container">
+          <p class="collaborate-heading">
+            We collaborate with
+            <a href="#" class="collaborate-link">350+ leading universities and companies</a>
+          </p>
+          <div class="collaborate-logos">
+            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/77hmeEJo3ZPlURCU02fD52/aa37b7f7b52285ba350acac62d8af5c1/illinois-3.png?auto=format%2Ccompress&dpr=2&h=32" alt="Illinois" class="collab-logo illinois">
+            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6XkOucZz6pMLV5DPvXCgCL/1777129a58b0a62b237bd28e9956afe8/duke-3.png?auto=format%2Ccompress&dpr=1&h=32" alt="Duke" class="collab-logo duke">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="collab-logo google">
+            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/60SA8pGxPXMmJf4n7umK1H/ccec31bbe2358210bf8391dcba6cd2f1/umich.png?auto=format%2Ccompress&dpr=1&h=55" alt="Michigan" class="collab-logo michigan">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" class="collab-logo ibm">
+            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/FHOd44z40jTFsSSao84AM/d1e357f5650a23bf2936114112d44445/imperial.png?auto=format%2Ccompress&dpr=1&h=35" alt="Imperial College London" class="collab-logo imperial">
+            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/4FSFmNXuDIzTvFb7n0v4mK/704ae9e0a7981fb6415f4cb4609bbbb3/stanford.svg?auto=format%2Ccompress&dpr=1&h=27" alt="Stanford" class="collab-logo stanford">
+            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1ZeiauXe5bPProvfuIo7o2/55d005d42979ab585cdfa01f825b7d4f/penn.svg?auto=format%2Ccompress&dpr=1&h=37" alt="Penn" class="collab-logo penn">
+          </div>
+        </div>
+    </section>
+
+    <section class="role-explorer-bg">
+        <div class="role-explorer">
+          <aside class="role-sidebar">
+            <h2>Choose<br>your role</h2>
+            <p>Gain the knowledge and<br>skills you need to advance.</p>
+            <a href="#" class="role-btn">Explore all roles</a>
+          </aside>
+          <main class="role-main">
+            <div class="role-filters">
+              <div class="dropdown">
+                <button class="role-chip">Beginner <span class="role-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="#333"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span></button>
+              </div>
+              <hr class="role-divider">
+              <button class="role-chip active">Popular</button>
+              <button class="role-chip">Software Engineering &amp; IT</button>
+              <button class="role-chip">Business</button>
+              <button class="role-chip">Sales &amp; Marketing</button>
+              <button class="role-chip">Data Science &amp; Analytics</button>
+              <button class="role-chip">Healthcare</button>
+            </div>
+            <div class="role-cards">
+              <!-- Card 1 -->
+              <div class="role-card">
+                <div class="role-card-img role-card-img-analyst">
+                  
+                </div>
+                <div class="role-card-content">
+                  <h3>Data Analyst</h3>
+                  <p>
+                    A Data Analyst collects, cleans, and interprets data, using tools like Excel, SQL, and Tableau to analyze trends and provide insights for decisions.
+                  </p>
+                  <p class="role-like"><b>If you like:</b> analyzing data to find insights, creating reports and visualizations, working with spreadsheets and databases</p>
+                  <p class="role-salary">
+                    <b>₹270,910</b> median salary<sup>1</sup><br>
+                    25,910 jobs available<sup>1</sup>
+                  </p>
+                  <div class="role-credentials">
+                    <span>Credentials</span>
+                    <a href="#">Google Data Analyst</a>,
+                    <a href="#">IBM Data Analyst</a>,
+                    <a href="#">DeepLearning.AI Data Analytics</a>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="role-card">
+                <div class="role-card-img role-card-img-scientist">
+                  
+                </div>
+                <div class="role-card-content">
+                  <h3>Data Scientist</h3>
+                  <p>
+                    A Data Scientist analyzes large datasets to uncover insights, using statistics, machine learning, and visualization to inform business strategies.
+                  </p>
+                  <p class="role-like"><b>If you like:</b> analyzing complex datasets, developing machine learning models, solving statistical problems</p>
+                  <p class="role-salary">
+                    <b>₹360,575</b> median salary<sup>1</sup><br>
+                    23,554 jobs available<sup>1</sup>
+                  </p>
+                  <div class="role-credentials">
+                    <span>Credentials</span>
+                    <a href="#">IBM Data Science</a>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="role-card">
+                <div class="role-card-img role-card-img-cyber">
+                  
+                </div>
+                <div class="role-card-content">
+                  <h3>Cyber Security Analyst</h3>
+                  <p>
+                    A Cyber Security Analyst monitors IT systems, analyzes threats, finds vulnerabilities, and implements measures to protect data from cyber attacks.
+                  </p>
+                  <p class="role-like"><b>If you like:</b> protecting networks and data from threats, analyzing security vulnerabilities, developing security protocols</p>
+                  <p class="role-salary">
+                    <b>₹456,580</b> median salary<sup>1</sup><br>
+                    2,347 jobs available<sup>1</sup>
+                  </p>
+                  <div class="role-credentials">
+                    <span>Credentials</span>
+                    <a href="#">Google Cybersecurity</a>,
+                    <a href="#">Microsoft Cybersecurity Analyst</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+    </section>
+
+    <section class="cert-section">
+        <div class="cert-container">
+          <div class="cert-header">
+            <div class="cert-subtitle">Specializations and Professional Certificates</div>
+            <h2 class="cert-title">Most Popular Certificates</h2>
+            <div class="cert-desc">
+              Explore our most popular programs, get job-ready for an in-demand career.
+            </div>
+          </div>
+          <div class="cert-cards-row">
+            <!-- Card 1 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Google Data Analytics">
+                <span class="cert-badge">★ New AI skills</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+                    <span class="logo-tooltip">Google</span>
+                    <span>Google</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Google Data Analytics</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Build toward a degree</a>
+                  <span>Professional Certificate</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Google Project Management">
+                <span class="cert-badge">★ New AI skills</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+                    <span class="logo-tooltip">Google</span>
+                    <span>Google</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Google Project Management:</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Build toward a degree</a>
+                  <span>Professional Certificate</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Google IT Support">
+                <span class="cert-badge">★ New AI skills</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+                    <span class="logo-tooltip">Google</span>
+                    <span>Google</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Google IT Support</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Build toward a degree</a>
+                  <span>Professional Certificate</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Google UX Design">
+                <span class="cert-badge">★ New AI skills</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+                    <span class="logo-tooltip">Google</span>
+                    <span>Google</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Google UX Design</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Build toward a degree</a>
+                  <div>Professional Certificate</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cert-actions">
+            <button class="cert-btn cert-btn-blue">Show 8 more</button>
+            <button class="cert-btn cert-btn-outline">View all <span class="dropdown-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="#0056d2"><path d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z"/></svg></span></button>
+          </span<>
+        </div>
+    </section>
+
+    <section class="genai-section">
+        <div class="genai-container">
+          <div class="genai-left">
+            <h2>Get started<br>with GenAI</h2>
+            <p>
+              Identify, develop, and<br>
+              execute impactful GenAI<br>
+              business strategies.
+            </p>
+            <a href="#" class="genai-btn">View all GenAI <span class="dropdown-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="#ffffff"><path d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z"/></svg></span></a>
+          </div>
+          <div class="genai-right">
+            <div class="genai-filters">
+              <button class="genai-chip genai-chip-new">New</button>
+              <button class="genai-chip">Beginner</button>
+              <button class="genai-chip">Popular</button>
+              <button class="genai-chip">Tools</button>
+            </div>
+            <div class="genai-cards">
+              <!-- Card 1 -->
+              <div class="genai-card">
+                <div class="genai-card-img">
+                  <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Agentic AI and AI Agents for Leaders">
+                </div>
+                <div class="genai-card-body">
+                  <span class="logo-tooltip-wrap">
+                    <div class="genai-card-logo">
+                      <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/89/63fef0315140268d5c0f66eee8e85e/VU_360x360.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="Vanderbilt University">
+                      <span class="logo-tooltip">Vanderbilt University</span>
+                      <span>Vanderbilt University</span>
+                    </div>
+                  </span>
+                  <div class="genai-card-title">
+                    Agentic AI and AI Agents for Leaders
+                  </div>
+                  <div class="genai-card-meta">
+                    Specialization
+                  </div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="genai-card">
+                <div class="genai-card-img">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Microsoft AI & ML Engineering">
+                </div>
+                <div class="genai-card-body">
+                    <span class="logo-tooltip-wrap">
+                      <div class="genai-card-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+                        <span class="logo-tooltip">Microsoft</span>
+                        <span>Microsoft</span>
+                      </div>
+                    </span>
+                    <div class="genai-card-title">
+                      Microsoft AI &amp; ML Engineering
+                    </div>
+                    <div class="genai-card-meta">
+                      Professional Certificate
+                    </div>
+                  </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="genai-card">
+                <div class="genai-card-img">
+                  <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="IBM Generative AI Engineering">
+                </div>
+                <div class="genai-card-body">
+                    <span class="logo-tooltip-wrap">
+                      <div class="genai-card-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+                        <span class="logo-tooltip">IBM</span>
+                        <span>IBM</span>
+                      </div>
+                    </span>
+                    <div class="genai-card-title">
+                      IBM Generative AI Engineering
+                    </div>
+                    <div class="genai-card-meta">
+                      Professional Certificate
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+    <section class="cert-section">
+        <div class="cert-container">
+          <div class="cert-header">
+            <div class="cert-subtitle">Courses and Professional Certificates</div>
+            <h2 class="cert-title">New on Coursera</h2>
+            <div class="cert-desc">
+              Explore our newest programs, focused on delivering in-demand skills.
+            </div>
+          </div>
+          <div class="cert-cards-row">
+            <!-- Card 1 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Data Analytics Professional Certificate">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                    <div class="cert-card-logo">
+                  <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="DeepLearning.AI" style="width:22px;height:22px;">
+                  <span class="logo-tooltip">DeepLearning.AI</span>
+                  <span>DeepLearning.AI</span>
+                </div>
+              </span>
+                <div class="cert-card-title">DeepLearning.AI Data Analytics</div>
+                <div class="cert-card-meta">
+                  Professional Certificate
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="UX Design Toolkit">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                <div class="cert-card-logo">
+                  <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/16/ff7d736fe7440b882e9d4c1ccd997c/coursera-wordmark-logo-full-rgb.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="Coursera" style="width:22px;height:22px;">
+                  <span class="logo-tooltip">Coursera</span>
+                  <span>Coursera</span>
+                </div>
+            </span>
+                <div class="cert-card-title">UX Design Toolkit</div>
+                <div class="cert-card-meta">
+                  Professional Certificate
+                </div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="cert-card">
+
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Google Agile Essentials">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">  <div class="cert-card-logo">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" style="width:22px;height:22px;">
+                  <span class="logo-tooltip">Google</span>
+                  <span>Google</span>
+                </div>
+            </span>
+                <div class="cert-card-title">Google Agile Essentials</div>
+                <div class="cert-card-meta">
+                  Course
+                </div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Adobe Graphic Designer">
+                <span class="cert-badge">★ New AI skills</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                     <div class="cert-card-logo">
+                  <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/d9/7ac5ee1c0247dab299ec6a8343f16d/Adobe-A-square.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="Adobe" style="width:22px;height:22px;">
+                  <span class="logo-tooltip">Adobe</span>
+                  <span>Adobe</span>
+                </div>
+            </span>
+                <div class="cert-card-title">Adobe Graphic Designer</div>
+                <div class="cert-card-meta">
+                  Professional Certificate
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cert-actions">
+            <button class="cert-btn cert-btn-blue">Show 8 more</button>
+            <button class="cert-btn cert-btn-outline">
+              View all
+              <span class="dropdown-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="#0056d2"><path d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+    </section>
+
+    <section class="cert-section">
+        <div class="cert-container">
+          <div class="cert-header">
+            <div class="cert-subtitle">100% Free</div>
+            <h2 class="cert-title">Start learning with free courses</h2>
+            <div class="cert-desc">
+              Explore free online courses from the world's top universities and companies.
+            </div>
+          </div>
+          <div class="cert-cards-row">
+            <!-- Card 1 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="AI in National Security">
+                <span class="cert-badge">Free</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="60" font-family="Arial" fill="rgb(0, 39, 97)">S</text>
+                    </svg>
+                    <span class="logo-tooltip">Special Competitive Studies Project</span>
+                    <span>Special Competitive Studies Project</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">AI in National Security: Integrating Artificial Intelligence into Public Sector Missions</div>
+                <div class="cert-card-meta">
+                  <span>Course</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Open Source Models with Hugging Face">
+                <span class="cert-badge">Free</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="DeepLearning.AI">
+                    <span class="logo-tooltip">DeepLearning.AI</span>
+                    <span>DeepLearning.AI</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Open Source Models with Hugging Face</div>
+                <div class="cert-card-meta">
+                  <span>Project</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Introducing Multimodal Llama 3.2">
+                <span class="cert-badge">Free</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="DeepLearning.AI">
+                    <span class="logo-tooltip">DeepLearning.AI</span>
+                    <span>DeepLearning.AI</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Introducing Multimodal Llama 3.2</div>
+                <div class="cert-card-meta">
+                  <span>Project</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Business Analytics with Excel">
+                <span class="cert-badge">Free</span>
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/93/57fd6a96044c4bad3139afd3e87fd6/jhu-shield.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="Johns Hopkins University">
+                    <span class="logo-tooltip">Johns Hopkins University</span>
+                    <span>Johns Hopkins University</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Business Analytics with Excel: Elementary to Advanced</div>
+                <div class="cert-card-meta">
+                  <span>Course</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cert-actions">
+            <button class="cert-btn cert-btn-blue">Show 8 more</button>
+            <button class="cert-btn cert-btn-outline">View all <span class="dropdown-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="#0056d2"><path d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z"/></svg></span></button>
+          </div>
+        </div>
+    </section>
+      
+    <section class="cert-section">
+        <div class="cert-container">
+          <div class="cert-header">
+            <div class="cert-subtitle">Degree Programs</div>
+            <h2 class="cert-title">Get a head start on a degree today</h2>
+            <div class="cert-desc">
+              With these programs, you can build valuable skills, earn career credentials, and make progress toward a degree before you even enroll.
+            </div>
+          </div>
+          <div class="cert-cards-row">
+            <!-- Card 1 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://images.pexels.com/photos/5553050/pexels-photo-5553050.jpeg" alt="Master of Engineering in Engineering Management">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/a6/7035b7e00b401383be4e5856b8bdaa/Boulder-FL-VERT-B---cropped.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="University of Colorado Boulder">
+                    <span class="logo-tooltip">University of Colorado Boulder</span>
+                    <span>University of Colorado Boulder</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Master of Engineering in Engineering Management</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Earn a degree</a>
+                  <span>Degree</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg" alt="Master of Science in Electrical Engineering">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/a6/7035b7e00b401383be4e5856b8bdaa/Boulder-FL-VERT-B---cropped.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="University of Colorado Boulder">
+                    <span class="logo-tooltip">University of Colorado Boulder</span>
+                    <span>University of Colorado Boulder</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Master of Science in Electrical Engineering</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Earn a degree</a>
+                  <span>Degree</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg" alt="Master of Science in Computer Science">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/a6/7035b7e00b401383be4e5856b8bdaa/Boulder-FL-VERT-B---cropped.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="University of Colorado Boulder">
+                    <span class="logo-tooltip">University of Colorado Boulder</span>
+                    <span>University of Colorado Boulder</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Master of Science in Computer Science</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Earn a degree</a>
+                  <span>Degree</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg" alt="Master of Business Administration (iMBA)">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Illinois_Fighting_Illini_logo.svg/1200px-Illinois_Fighting_Illini_logo.svg.png" alt="University of Illinois Urbana-Champaign">
+                    <span class="logo-tooltip">University of Illinois Urbana-Champaign</span>
+                    <span>University of Illinois Urbana-Champaign</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Master of Business Administration (iMBA)</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Earn a degree</a>
+                  <span>Degree</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cert-actions">
+            <button class="cert-btn cert-btn-blue">Show 8 more</button>
+            <button class="cert-btn cert-btn-outline">View all <span class="dropdown-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="#0056d2"><path d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z"/></svg></span></button>
+          </div>
+        </div>
+    </section>
+    
+    <section class="cert-section">
+        <div class="cert-container">
+          <div class="cert-header">
+            <div class="cert-subtitle">Degree Programs</div>
+            <h2 class="cert-title">Find a top degree that fits your life</h2>
+            <div class="cert-desc">
+              Breakthrough pricing on 100% online degrees from top universities.
+            </div>
+          </div>
+          <div class="cert-cards-row">
+            <!-- Card 1 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg" alt="Bachelor of Science in Data Science & AI">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/12/IIT_Guwahati_Logo.svg/1200px-IIT_Guwahati_Logo.svg.png" alt="Indian Institute of Technology Guwahati">
+                    <span class="logo-tooltip">Indian Institute of Technology Guwahati</span>
+                    <span>Indian Institute of Technology Guwahati</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Bachelor of Science in Data Science & AI</div>
+                <div class="cert-card-meta" style="padding-top: 15px;">
+                  <a href="#" class="cert-link">Earn a degree</a>
+                  <span>Degree</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg" alt="Bachelor of Science in Computer Science">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png" alt="Birla Institute of Technology & Science, Pilani">
+                    <span class="logo-tooltip">Birla Institute of Technology & Science, Pilani</span>
+                    <span>Birla Institute of Technology & Science, Pilani</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Bachelor of Science in Computer Science</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link">Earn a degree</a>
+                  <span>Degree</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg" alt="Executive MBA">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/93/dafd90b13544b3844d0967bcb2fe77/iitricon.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="IIT Roorkee">
+                    <span class="logo-tooltip">IIT Roorkee</span>
+                    <span>IIT Roorkee</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">Executive MBA</div>
+                <div class="cert-card-meta" style="padding-top: 35px;">
+                  <a href="#" class="cert-link">Earn a degree</a>
+                  <span>Degree</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="cert-card">
+              <div class="cert-card-img">
+                <img src="https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg" alt="PG Diploma in Management (PGDM) Online">
+              </div>
+              <div class="cert-card-body">
+                <span class="logo-tooltip-wrap">
+                  <div class="cert-card-logo">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/67/ea8ae2575a4402ab7d212dd3b66ace/360-x-360-1-.png?auto=format%2Ccompress&dpr=3&w=24&h=24" alt="S.P. Jain Institute of Management and Research">
+                    <span class="logo-tooltip">S.P. Jain Institute of Management and Research</span>
+                    <span>S.P. Jain Institute of Management and Research</span>
+                  </div>
+                </span>
+                <div class="cert-card-title">PG Diploma in Management (PGDM) Online</div>
+                <div class="cert-card-meta">
+                  <a href="#" class="cert-link"> Earn a degree</a>
+                  <span>Degree</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cert-actions">
+            <button class="cert-btn cert-btn-blue">Show 8 more</button>
+            <button class="cert-btn cert-btn-outline">View all <span class="dropdown-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="#0056d2"><path d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z"/></svg></span></button>
+          </div>
+        </div>
+    </section>
+      
+    <section class="explore-section">
+        <p class="disclaimer">¹Each university determines admission and the number of pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have.</p>
+        
+        <h2 class="explore-heading">Explore Coursera</h2>
+        
+        <div class="category-container">
+          <!-- Row 1 -->
+          <div class="category-card">
+            <div class="category-image data-science-img"></div>
+            <div class="category-info">
+              <h3>Data Science</h3>
+              <p>425 courses</p>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-image business-img"></div>
+            <div class="category-info">
+              <h3>Business</h3>
+              <p>1095 courses</p>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-image computer-science-img"></div>
+            <div class="category-info">
+              <h3>Computer Science</h3>
+              <p>668 courses</p>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-image health-img"></div>
+            <div class="category-info">
+              <h3>Health</h3>
+              <p>471 courses</p>
+            </div>
+          </div>
+          
+          <!-- Row 2 -->
+          <div class="category-card">
+            <div class="category-image social-sciences-img"></div>
+            <div class="category-info">
+              <h3>Social Sciences</h3>
+              <p>401 courses</p>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-image personal-dev-img"></div>
+            <div class="category-info">
+              <h3>Personal Development</h3>
+              <p>137 courses</p>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-image arts-humanities-img"></div>
+            <div class="category-info">
+              <h3>Arts and Humanities</h3>
+              <p>338 courses</p>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-image physical-science-img"></div>
+            <div class="category-info">
+              <h3>Physical Science and Engineering</h3>
+              <p>413 courses</p>
+            </div>
+          </div>
+          
+          <!-- Row 3 -->
+          <div class="category-card">
+            <div class="category-image language-img"></div>
+            <div class="category-info">
+              <h3>Language Learning</h3>
+              <p>150 courses</p>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-image info-tech-img"></div>
+            <div class="category-info">
+              <h3>Information Technology</h3>
+              <p>145 courses</p>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-image math-logic-img"></div>
+            <div class="category-info">
+              <h3>Math and Logic</h3>
+              <p>70 courses</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="learner-outcomes">
+        <div class="outcomes-container">
+            <div class="images-section">
+                <div class="image-top">
+                    <img src="https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg" alt="Two people working on a project">
+                </div>
+                <div class="image-middle">
+                    <img src="https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg" alt="Two people looking at computer">
+                </div>
+                <div class="image-bottom">
+                    <img src="https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg" alt="Professional man in suit">
+                </div>
+                <div class="dotted-line line1"></div>
+                <div class="dotted-line line2"></div>
+            </div>
+            <div class="content-section">
+                <h2>Learner outcomes on Coursera</h2>
+                <p><strong>77% of learners report career benefits</strong>, such as new skills, increased pay, and new job opportunities. <a href="#">2023 Coursera Learner Outcomes Report</a></p>
+                <a href="#" class="join-button">Join for Free</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="community-section">
+        <div class="community-container">
+          <h2 class="community-heading">From the Coursera community</h2>
+          <p class="community-subheading">168+ million people have already joined Coursera</p>
+          
+          <div class="testimonials-container">
+
+            <div class="testimonial">
+              <div class="profile-image">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Kenia R.">
+              </div>
+              <h3 class="profile-name">Kenia R.</h3>
+              <p class="profile-location">United States</p>
+              <div class="divider"></div>
+              <p class="testimonial-text">
+                "Being a mother — especially a working mother means I'm constantly trying to juggle my schedule, my kids' schedules, and work. I am very grateful for the flexible and remote learning programs that Coursera has to offer."
+              </p>
+            </div>
+            
+            <div class="testimonial">
+              <div class="profile-image">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Ryan L.">
+              </div>
+              <h3 class="profile-name">Ryan L.</h3>
+              <p class="profile-location">United States</p>
+              <div class="divider"></div>
+              <p class="testimonial-text">
+                "From taking courses on Coursera, I gained a deep understanding of the UX Design process from start to finish. With the knowledge I gained, I feel prepared for entry-level jobs and internships. I've been able to apply the skills and knowledge I gained to multiple projects and work experiences."
+              </p>
+            </div>
+            
+            <div class="testimonial">
+              <div class="profile-image">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Vishal V.">
+              </div>
+              <h3 class="profile-name">Vishal V.</h3>
+              <p class="profile-location">India</p>
+              <div class="divider"></div>
+              <p class="testimonial-text">
+                "I really enjoyed my courses. The quizzes, videos, and quick labs provided helpful hands-on experience. Learning on Coursera has given me the confidence and ability to excel in my career. I love this feeling."
+              </p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="business-section">
+        <div class="business-container">
+          <div class="business-content">
+            <h2 class="business-heading">Drive your business forward by empowering your talent</h2>
+            <p class="business-text">Train teams with industry-leading experts and universities, enhanced by AI tools and recognized credentials.</p>
+            <a href="#" class="business-button">Discover Coursera for Business</a>
+            <p class="business-small-text">Upskill a small team? <a href="#" class="business-link">Check out Coursera for Teams <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a></p>
+          </div>
+          
+          <div class="business-logos" >
+            <div class="logo-row" style="border-bottom:rgb(182, 194, 221) 1px solid;">
+              <div class="logo-item" style="border-right:rgb(182, 194, 221) 1px solid;">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/13nB6DdjBJdV5aWWWB5DbH/115574ebbc6de3dffd98daed665dc736/loreal.svg?auto=format%2Ccompress&dpr=2&w=60%25&h=18" alt="L'Oreal" class="business-logo">
+              </div>
+              <div class="logo-item" style="border-right:rgb(182, 194, 221) 1px solid;">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2aaUOe2Jitm1Z6OPdylXsL/37974ceb0982ccf2c6fabf3fa6bdb5bc/pandg.svg?auto=format%2Ccompress&dpr=2&w=60%25&h=40" alt="P&G" class="business-logo">
+              </div>
+              <div class="logo-item">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2gSh2ySvHF7nLxtb9dlQEt/764bae06b9276de25caa4ed11bf14000/tata.svg?auto=format%2Ccompress&dpr=2&w=60%25&h=37" alt="Tata" class="business-logo">
+              </div>
+            </div>
+            
+            <div class="logo-row" style="border-bottom:rgb(182, 194, 221) 1px solid;">
+              <div class="logo-item" style="border-right:rgb(182, 194, 221) 1px solid;">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6cQLsEIdYwjlG4whpJ0bau/5cb01b12278ee726314800c15f08c5e2/DANONE_LOGO.png?auto=format%2Ccompress&dpr=2&w=60%25&h=36" alt="Danone" class="business-logo">
+              </div>
+              <div class="logo-item" style="border-right:rgb(182, 194, 221) 1px solid;">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/46IDJ7jA1jOzKUcuJEdv9x/bccbe406253ab481290052d1580d7eae/Emirates_NBD_logo.png?auto=format%2Ccompress&dpr=2&w=60%25&h=30" alt="Emirates NBD" class="business-logo">
+              </div>
+              <div class="logo-item">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2jYSxpX0am6lmzOXiF01eb/b2dad4d9e4844a15e828990aa09b6377/Reliance_logo-2.svg?auto=format%2Ccompress&dpr=2&w=60%25&h=30" alt="Reliance" class="business-logo">
+              </div>
+            </div>
+            
+            <div class="logo-row">
+              <div class="logo-item" style="border-right:rgb(182, 194, 221) 1px solid;">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1GFMf2tN2JubXPXodUfEhU/f60a309a58fd4a5e750f0497e24a52ab/logo-capgemini.svg?auto=format%2Ccompress&dpr=2&w=60%25&h=30" alt="Capgemini" class="business-logo">
+              </div>
+              <div class="logo-item" style="border-right:rgb(182, 194, 221) 1px solid;">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Td6rChmrhf755FaNcHMkw/7f172851005dc6275667c667ffa2678a/logo-petrobras.svg?auto=format%2Ccompress&dpr=2&w=60%25&h=30" alt="Petrobras" class="business-logo">
+              </div>
+              <div class="logo-item">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/7ynjohQJbi7h24Qk5uUyPW/399503cb97a2775554f28921721d6fd1/General_Electric_logo.svg?auto=format%2Ccompress&dpr=2&w=60%25&h=30" alt="GE" class="business-logo">
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="next-step-section">
+        <div class="next-step-container">
+          <div class="image-container">
+            <div class="circle-decoration"></div>
+            <img  src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=1&w=320&h=180&fit=crop&q=50" alt="Professional woman in office setting" class="professional-image">
+          </div>
+          
+          <div class="content-container">
+            <h2 class="next-step-heading">Take the next step toward your personal and professional goals with Coursera.</h2>
+            <p class="next-step-text">Join now to receive personalized recommendations from the full Coursera catalog.</p>
+            <a href="#" class="join-button">Join for Free</a>
+          </div>
+        </div>
+        
+        <div class="footnotes">
+          <p class="footnote">¹ Median salary and job opening data are sourced from Lightcast™ Job Postings Report.</p>
+          <p class="footnote">Content Creator, Machine Learning Engineer and Salesforce Development Representative (01/01/2024 - 31/12/2024)</p>
+          <p class="footnote">All other job roles (01/04/2024 - 01/04/2025)</p>
+        </div>
+    </section>
+    
+    <footer class="coursera-footer">
+        <div class="footer-container">
+          <!-- Top footnotes section -->
+          <div class="footnotes">
+            <p class="footnote">Content Creator, Machine Learning Engineer and Salesforce Development Representative (01/01/2024 - 31/12/2024)</p>
+            <p class="footnote">All other job roles (01/04/2024 - 01/04/2025)</p>
+          </div>
+          
+          <!-- Main footer links section -->
+          <div class="footer-links-section">
+            <!-- Technical Skills Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">Technical Skills</h3>
+              <ul class="footer-links">
+                <li><a href="#">ChatGPT</a></li>
+                <li><a href="#">Coding</a></li>
+                <li><a href="#">Computer Science</a></li>
+                <li><a href="#">Cybersecurity</a></li>
+                <li><a href="#">DevOps</a></li>
+                <li><a href="#">Ethical Hacking</a></li>
+                <li><a href="#">Generative AI</a></li>
+                <li><a href="#">Java Programming</a></li>
+                <li><a href="#">Python</a></li>
+                <li><a href="#">Web Development</a></li>
+              </ul>
+            </div>
+            
+            <!-- Analytical Skills Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">Analytical Skills</h3>
+              <ul class="footer-links">
+                <li><a href="#">Artificial Intelligence</a></li>
+                <li><a href="#">Big Data</a></li>
+                <li><a href="#">Business Analysis</a></li>
+                <li><a href="#">Data Analytics</a></li>
+                <li><a href="#">Data Science</a></li>
+                <li><a href="#">Financial Modeling</a></li>
+                <li><a href="#">Machine Learning</a></li>
+                <li><a href="#">Microsoft Excel</a></li>
+                <li><a href="#">Microsoft Power BI</a></li>
+                <li><a href="#">SQL</a></li>
+              </ul>
+            </div>
+            
+            <!-- Business Skills Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">Business Skills</h3>
+              <ul class="footer-links">
+                <li><a href="#">Accounting</a></li>
+                <li><a href="#">Digital Marketing</a></li>
+                <li><a href="#">E-commerce</a></li>
+                <li><a href="#">Finance</a></li>
+                <li><a href="#">Google</a></li>
+                <li><a href="#">Graphic Design</a></li>
+                <li><a href="#">IBM</a></li>
+                <li><a href="#">Marketing</a></li>
+                <li><a href="#">Project Management</a></li>
+                <li><a href="#">Social Media Marketing</a></li>
+              </ul>
+            </div>
+            
+            <!-- Career Resources Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">Career Resources</h3>
+              <ul class="footer-links">
+                <li><a href="#">Essential IT Certifications</a></li>
+                <li><a href="#">High-Income Skills to Learn</a></li>
+                <li><a href="#">How to Get a PMP Certification</a></li>
+                <li><a href="#">How to Learn Artificial Intelligence</a></li>
+                <li><a href="#">Popular Cybersecurity Certifications</a></li>
+                <li><a href="#">Popular Data Analytics Certifications</a></li>
+                <li><a href="#">What Does a Data Analyst Do?</a></li>
+                <li><a href="#">Career Development Resources</a></li>
+                <li><a href="#">Career Aptitude Test</a></li>
+                <li><a href="#">Share your Coursera Learning Story</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Bottom footer section -->
+          <div class="footer-bottom">
+            <!-- Coursera Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">Coursera</h3>
+              <ul class="footer-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">What We Offer</a></li>
+                <li><a href="#">Leadership</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Catalog</a></li>
+                <li><a href="#">Coursera Plus</a></li>
+                <li><a href="#">Professional Certificates</a></li>
+                <li><a href="#">MasterTrack® Certificates</a></li>
+                <li><a href="#">Degrees</a></li>
+                <li><a href="#">For Enterprise</a></li>
+                <li><a href="#">For Government</a></li>
+                <li><a href="#">For Campus</a></li>
+                <li><a href="#">Become a Partner</a></li>
+                <li><a href="#">Social Impact</a></li>
+                <li><a href="#">Free Courses</a></li>
+                <li><a href="#">ECTS Credit Recommendations</a></li>
+              </ul>
+            </div>
+            
+            <!-- Community Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">Community</h3>
+              <ul class="footer-links">
+                <li><a href="#">Learners</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Beta Testers</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">The Coursera Podcast</a></li>
+                <li><a href="#">Tech Blog</a></li>
+                <li><a href="#">Teaching Center</a></li>
+              </ul>
+            </div>
+            
+            <!-- More Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">More</h3>
+              <ul class="footer-links">
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Investors</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Accessibility</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Directory</a></li>
+                <li><a href="#">Affiliates</a></li>
+                <li><a href="#">Modern Slavery Statement</a></li>
+                <li><a href="#">Manage Cookie Preferences</a></li>
+              </ul>
+            </div>
+            
+            <!-- App Downloads and Certification -->
+            <div class="footer-column app-column">
+              <div class="app-downloads">
+                <a href="#" class="app-badge">
+                  <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/download_on_the_app_store_badge_en.svg" alt="Download on the App Store" width="140">
+                </a>
+                <a href="#" class="app-badge">
+                  <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/en_generic_rgb_wo_45.png" alt="Get it on Google Play" width="140">
+                </a>
+              </div>
+              <div class="certification">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/77hmeEJo3ZPlXgjPzr8Bve/aa37b7f7b52285ba350acac62d8af5c1/b-corp-logo.svg" alt="B Corporation Certified" width="100">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Copyright and Social Media -->
+          <div class="footer-copyright">
+            <div class="copyright-text">
+              <p>clone cloner clonest</p>
+            </div>
+            <div class="social-icons">
+              <a href="#" class="social-icon"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/facebook.svg" alt="Facebook" width="24"></a>
+              <a href="#" class="social-icon"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/linkedin.svg" alt="LinkedIn" width="24"></a>
+              <a href="#" class="social-icon"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/twitter.svg" alt="Twitter" width="24"></a>
+              <a href="#" class="social-icon"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/youtube.svg" alt="YouTube" width="24"></a>
+              <a href="#" class="social-icon"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/instagram.svg" alt="Instagram" width="24"></a>
+              <a href="#" class="social-icon"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/tiktok.svg" alt="TikTok" width="24"></a>
+            </div>
+          </div>
+        </div>
+    </footer>
+    
+    <div class="disclaimer-container">
+        <div class="disclaimer-content">
+            <h3>Website Clone Disclaimer</h3>
+            <p>DISCLAIMER: This website is a <strong>non-official clone</strong> of Coursera created for educational and demonstration purposes only. This is NOT the official Coursera website.</p>
+            
+            <p>This clone website is intended solely for:</p>
+            <ul>
+                <li>Educational purposes</li>
+                <li>Portfolio demonstration</li>
+                <li>Web development practice</li>
+                <li>UI/UX design study</li>
+            </ul>
+            
+            <p>We are not affiliated with, endorsed by, sponsored by, or in any way officially connected with Coursera Inc. All Coursera names, trademarks, logos, and brands are property of their respective owners. All company, product, and service names used on this website are for identification purposes only.</p>
+            
+            <p>The content on this clone website may not be accurate, up-to-date, or complete. We do not guarantee the functionality, reliability, availability, or suitability of this clone website for any purpose. The use of this clone website is entirely at your own risk.</p>
+            
+            <p>This clone does not collect any personal information and does not offer any actual courses, certificates, or degrees. Any links on this clone website may not function as expected.</p>
+            
+            <p>If you wish to access the official Coursera platform, please visit <a href="https://www.coursera.org">www.coursera.org</a>.</p>
+            
+            <p>This clone website is not for commercial use.</p>
+        </div>
+    </div>
+
+    <script>
+        // Modal logic
+        document.getElementById("openMockCourse").addEventListener("click", () => {
+        document.getElementById("mockCourseModal").classList.remove("hidden");
+        });
+
+        document.querySelector(".close-button").addEventListener("click", () => {
+        document.getElementById("mockCourseModal").classList.add("hidden");
+        });
+
+        // Tab logic
+        function showTab(tabName) {
+        const tabs = document.querySelectorAll(".tab");
+        const contents = document.querySelectorAll(".tab-content");
+
+        tabs.forEach(tab => tab.classList.remove("active"));
+        contents.forEach(content => content.classList.remove("active"));
+
+        document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
+        document.getElementById(tabName).classList.add("active");
+        }
+
+        // Quiz logic
+        document.getElementById("quizForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        let score = 0;
+        const correctAnswers = {
+            q1: "b",
+            q2: "b",
+            q3: "a",
+            q4: "b",
+            q5: "c",
+            q6: "b",
+            q7: "b",
+            q8: "b",
+            q9: "a",
+            q10: "c"
+        };
+
+        for (let key in correctAnswers) {
+            const userAnswer = document.querySelector(`input[name="${key}"]:checked`)?.value;
+            if (userAnswer === correctAnswers[key]) {
+            score++;
+            }
+        }
+
+        document.getElementById("quizResult").textContent = `✅ You scored ${score}/10 correct!`;
+        });
+
+        // Demo course data for different topics and levels
+        const courseDB = {
+        python: {
+            beginner: [
+            { name: "Python for Everybody", duration: "6 weeks", difficulty: "Beginner" },
+            { name: "Programming with Python", duration: "4 weeks", difficulty: "Beginner" }
+            ],
+            intermediate: [
+            { name: "Python Data Structures", duration: "5 weeks", difficulty: "Intermediate" },
+            { name: "Python OOP", duration: "6 weeks", difficulty: "Intermediate" }
+            ],
+            advanced: [
+            { name: "Advanced Python", duration: "8 weeks", difficulty: "Advanced" },
+            { name: "Python for Data Science", duration: "10 weeks", difficulty: "Advanced" }
+            ]
+        },
+        "data science": {
+            beginner: [
+            { name: "Data Science Basics", duration: "6 weeks", difficulty: "Beginner" },
+            { name: "Intro to Data Science", duration: "4 weeks", difficulty: "Beginner" }
+            ],
+            intermediate: [
+            { name: "Applied Data Science", duration: "8 weeks", difficulty: "Intermediate" },
+            { name: "Data Science Methods", duration: "6 weeks", difficulty: "Intermediate" }
+            ],
+            advanced: [
+            { name: "Machine Learning with Data Science", duration: "10 weeks", difficulty: "Advanced" },
+            { name: "Deep Learning Specialization", duration: "12 weeks", difficulty: "Advanced" }
+            ]
+        }
+        // Add more topics as needed
+        };
+
+        function normalizeTopic(topic) {
+        topic = topic.trim().toLowerCase();
+        if (topic in courseDB) return topic;
+        // Fallback to python if topic not found
+        return "python";
+        }
+
+        // Modal open/close
+        document.getElementById('openCourseRecommender').onclick = function() {
+        document.getElementById('courseRecommender').classList.remove('hidden');
+        };
+        document.getElementById('closeCourseRecommender').onclick = function() {
+        document.getElementById('courseRecommender').classList.add('hidden');
+        resetQuiz();
+        };
+
+        // Handle topic input
+        let userTopic = "python";
+        document.getElementById('topicForm').onsubmit = function(e) {
+        e.preventDefault();
+        userTopic = normalizeTopic(document.getElementById('userTopic').value);
+        // Set topic label in all quiz questions
+        document.querySelectorAll('.topic-label').forEach(el => el.textContent = userTopic.charAt(0).toUpperCase() + userTopic.slice(1));
+        document.getElementById('topicContainer').classList.add('hidden');
+        document.getElementById('quizContainer').classList.remove('hidden');
+        };
+
+        // Handle quiz submission
+        document.getElementById('courseQuiz').onsubmit = function(e) {
+        e.preventDefault();
+        let score = 0;
+        for (let i = 1; i <= 5; i++) {
+            const val = document.querySelector(`input[name="q${i}"]:checked`);
+            if (val) score += parseInt(val.value, 10);
+        }
+        showRecommendations(score);
+        };
+
+        function showRecommendations(score) {
+        let level;
+        if (score <= 7) level = 'beginner';
+        else if (score <= 12) level = 'intermediate';
+        else level = 'advanced';
+
+        // Badge
+        const badge = document.getElementById('levelBadge');
+        badge.className = level;
+        badge.textContent = level.charAt(0).toUpperCase() + level.slice(1);
+
+        // Courses
+        const topic = userTopic;
+        const courseList = (courseDB[topic] && courseDB[topic][level]) || courseDB["python"][level];
+        const courseContainer = document.getElementById('courseSuggestions');
+        courseContainer.innerHTML = courseList.map(course => `
+            <div class="course-card">
+            <div class="course-difficulty ${course.difficulty.toLowerCase()}">${course.difficulty}</div>
+            <h4>${course.name}</h4>
+            <p>Duration: ${course.duration}</p>
+            </div>
+        `).join('');
+
+        document.getElementById('quizContainer').classList.add('hidden');
+        document.getElementById('recommendationResult').classList.remove('hidden');
+        }
+
+        // Reset everything
+        function resetQuiz() {
+        document.getElementById('topicContainer').classList.remove('hidden');
+        document.getElementById('quizContainer').classList.add('hidden');
+        document.getElementById('recommendationResult').classList.add('hidden');
+        document.getElementById('topicForm').reset();
+        document.getElementById('courseQuiz').reset();
+        }
+
+       
+
+    </script>
+</body>
+</html>
